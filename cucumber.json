@@ -1,0 +1,13 @@
+{
+  "default": {
+    "formatOptions": {
+      "snippetInterface": "synchronous"
+    },
+    "loader": [
+      "ts-node/esm"
+    ],
+    "import": [
+      "features/**/*.ts"
+    ]
+  }
+}
