@@ -1,7 +1,11 @@
 {
   "default": {
     "format": [
-      "@cucumber/pretty-formatter"
+      "@cucumber/pretty-formatter",
+      [
+        "html",
+        "cucumber-report.html"
+      ]
     ],
     "formatOptions": {
       "snippetInterface": "synchronous"
