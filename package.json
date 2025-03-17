@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "bunx cucumber-js"
+    "test": "bunx cucumber-js -p default"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^11.2.0",
