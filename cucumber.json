@@ -10,10 +10,11 @@
     "formatOptions": {
       "snippetInterface": "synchronous"
     },
-    "loader": [
-      "ts-node/esm"
+    "requireModule": [
+      "tsx/cjs",
+      "tsconfig-paths/register"
     ],
-    "import": [
+    "require": [
       "features/**/*.ts"
     ]
   }
