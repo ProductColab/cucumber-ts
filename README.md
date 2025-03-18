@@ -10,6 +10,7 @@ This project uses Cucumber.js with TypeScript for behavior-driven development. T
 - TypeScript support
 - HTML report generation
 - Pretty formatter for console output
+- GitHub Pages integration for test reports
 
 ### Dependencies
 
@@ -64,7 +65,7 @@ Run the tests:
 bunx --bun cucumber-js -p default
 ```
 
-View the HTML report:
+View the HTML report locally:
 
 ```bash
 bun test/cucumber-report.html
@@ -105,8 +106,35 @@ The project generates two types of reports:
 1. Console output using the pretty formatter
 2. HTML report in `cucumber-report.html`
 
-To view the HTML report after running tests, use:
+### Local Reports
+
+To view the HTML report after running tests locally:
 
 ```bash
 bun test/cucumber-report.html
 ```
+
+### GitHub Pages Integration
+
+The test report is automatically deployed to GitHub Pages on every push to the main branch. To set this up:
+
+1. Go to your repository's Settings
+2. Navigate to "Pages" in the sidebar
+3. Under "Source", select "GitHub Actions"
+4. The test report will be automatically deployed to `https://<username>.github.io/<repository-name>/cucumber-report.html`
+
+The deployment is handled by the GitHub Actions workflow in `.github/workflows/test-report.yml`, which:
+
+- Runs on every push to main and pull requests
+- Sets up Bun
+- Runs the tests
+- Uploads the report as a GitHub Pages artifact
+- Deploys the artifact to GitHub Pages (only on main branch)
+- Uses the official GitHub Pages deployment actions for secure and reliable deployment
+
+The workflow includes:
+
+- Proper permissions configuration for GitHub Pages deployment
+- Concurrency settings to prevent deployment conflicts
+- Environment configuration for deployment status tracking
+- Separate jobs for testing and deployment
