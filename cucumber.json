@@ -4,7 +4,7 @@
       "@cucumber/pretty-formatter",
       [
         "html",
-        "cucumber-report.html"
+        "test/cucumber-report.html"
       ]
     ],
     "formatOptions": {
