@@ -1,4 +1,4 @@
-import { UserCreateInput, UserRepository, UserUpdateInput } from '@/domain/interfaces/user.repository';
+import { UserCreateInput, UserRepository, UserUpdateInput } from '@/domain/repositories/user.repository';
 import { User } from '../../domain/entities/user';
 import { Email } from '../../domain/value-objects/email';
 import { Name } from '../../domain/value-objects/name';

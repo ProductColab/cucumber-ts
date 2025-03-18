@@ -1,7 +1,7 @@
 import { users, type User } from "../schema/schema";
 import { eq } from "drizzle-orm";
-import { Repository } from "../../../domain/interfaces/repository";
-import { UserCreateInput, UserUpdateInput } from "@/domain/interfaces/user.repository";
+import { Repository } from "@/domain/repositories/repository";
+import { UserCreateInput, UserUpdateInput } from "@/domain/repositories/user.repository";
 import db from "../sqlite";
 
 export class UserRepository implements Repository<User, UserCreateInput, UserUpdateInput> {
