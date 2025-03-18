@@ -25,5 +25,5 @@
     "noUncheckedSideEffectImports": true,
     "esModuleInterop": true
   },
-  "include": ["src", "features/**/*.ts"]
+  "include": ["src", "features/**/*.ts", "support/**/*.ts"]
 }
