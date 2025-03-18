@@ -40,6 +40,15 @@ jobs:
       - name: Run tests and generate report
         run: bunx --bun cucumber-js -p default
 
+      - name: Debug report location
+        run: |
+          ls -la test/
+          if [ -f test/cucumber-report.html ]; then
+            echo "Report file exists"
+          else
+            echo "Report file not found"
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
