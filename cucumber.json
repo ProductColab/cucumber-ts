@@ -8,7 +8,7 @@
       ]
     ],
     "formatOptions": {
-      "snippetInterface": "synchronous"
+      "snippetInterface": "async-await"
     },
     "paths": [
       "src/**/*.feature"
