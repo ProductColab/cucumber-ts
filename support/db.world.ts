@@ -4,14 +4,15 @@ import { userRepository } from "@/infrastructure/persistence/repositories/user.r
 import db from "@/infrastructure/persistence/sqlite";
 import { Email } from "@/domain/value-objects/email";
 import { Name } from "@/domain/value-objects/name";
-import { UserRepository } from "@/infrastructure/persistence/repositories/user.repository";
+import { UserRepository } from "@/domain/repositories/user.repository";
+import { User } from "@/domain/entities/user";
 
 export interface DbWorld extends World {
   db: typeof db;
   userRepository: UserRepository;
-  testUser: any;
-  testUsers: any[];
-  deletedUserId: number | null;
+  testUser: User | null;
+  testUsers: User[];
+  deletedUserId: User["id"] | null;
 }
 
 export class DbWorld extends World {
@@ -41,7 +42,7 @@ export class DbWorld extends World {
   }
 
   async findUserByEmail(email: string) {
-    this.testUser = await this.userRepository.findByEmail(email);
+    this.testUser = await this.userRepository.findByEmail(Email.create(email));
     return this.testUser;
   }
 
@@ -52,7 +53,7 @@ export class DbWorld extends World {
 
   async deleteTestUser(id: number) {
     await this.userRepository.delete(id);
-    this.testUser = { id };
+    this.testUser = null;
   }
 
   async listAllUsers() {
