@@ -4,10 +4,11 @@ import { userRepository } from "@/infrastructure/persistence/repositories/user.r
 import db from "@/infrastructure/persistence/sqlite";
 import { Email } from "@/domain/value-objects/email";
 import { Name } from "@/domain/value-objects/name";
+import { UserRepository } from "@/infrastructure/persistence/repositories/user.repository";
 
 export interface DbWorld extends World {
   db: typeof db;
-  userRepository: typeof userRepository;
+  userRepository: UserRepository;
   testUser: any;
   testUsers: any[];
   deletedUserId: number | null;
