@@ -15,6 +15,7 @@ When("I create a user with email {string} and name {string}", async function (th
 });
 
 When("I find the user by ID", async function (this: DbWorld) {
+  if (!this.testUser) throw new Error("Test user is null");
   await this.findUserById(this.testUser.id);
 });
 
@@ -23,10 +24,12 @@ When("I find the user by email {string}", async function (this: DbWorld, email: 
 });
 
 When("I update the user's name to {string}", async function (this: DbWorld, newName: string) {
+  if (!this.testUser) throw new Error("Test user is null");
   await this.updateTestUser(this.testUser.id, { name: newName });
 });
 
 When("I delete the user", async function (this: DbWorld) {
+  if (!this.testUser) throw new Error("Test user is null");
   if (this.testUser.id === null) {
     throw new Error("Test user ID is null");
   }
@@ -49,11 +52,13 @@ Then("the user should be found", function (this: DbWorld) {
 });
 
 Then("the user should have email {string}", function (this: DbWorld, email: string) {
-  assert(this.testUser.email === email, `User email should be ${email}`);
+  if (!this.testUser) throw new Error("Test user is null");
+  assert(this.testUser.getEmail() === email, `User email should be ${email}`);
 });
 
 Then("the user should have name {string}", function (this: DbWorld, name: string) {
-  assert(this.testUser.name === name, `User name should be ${name}`);
+  if (!this.testUser) throw new Error("Test user is null");
+  assert(this.testUser.getName() === name, `User name should be ${name}`);
 });
 
 Then("the user should be updated successfully", function (this: DbWorld) {
@@ -61,7 +66,8 @@ Then("the user should be updated successfully", function (this: DbWorld) {
 });
 
 Then("the user should still have email {string}", function (this: DbWorld, email: string) {
-  assert(this.testUser.email === email, `User email should still be ${email}`);
+  if (!this.testUser) throw new Error("Test user is null");
+  assert(this.testUser.getEmail() === email, `User email should still be ${email}`);
 });
 
 Then("the user should be deleted successfully", async function (this: DbWorld) {
@@ -85,6 +91,6 @@ Then("I should see {int} users", function (this: DbWorld, count: number) {
 });
 
 Then("the users should include {string}", function (this: DbWorld, email: string) {
-  const userEmails = this.testUsers.map((u: any) => u.email);
+  const userEmails = this.testUsers.map((u) => u.getEmail());
   assert(userEmails.includes(email), `Users should include ${email}`);
 }); 

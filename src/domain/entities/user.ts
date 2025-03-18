@@ -21,6 +21,16 @@ export class User {
     );
   }
 
+  static fromDb(data: { id: number; email: string; name: string; created_at: Date; updated_at: Date }): User {
+    return new User(
+      data.id,
+      Email.create(data.email),
+      Name.create(data.name),
+      new Date(data.created_at),
+      new Date(data.updated_at)
+    );
+  }
+
   update(name: string): User {
     return new User(
       this.id,
