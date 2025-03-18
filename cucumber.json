@@ -10,12 +10,12 @@
     "formatOptions": {
       "snippetInterface": "synchronous"
     },
-    "requireModule": [
-      "tsx/cjs",
-      "tsconfig-paths/register"
+    "paths": [
+      "src/**/*.feature"
     ],
-    "require": [
-      "features/**/*.ts"
+    "import": [
+      "support/**/*.ts",
+      "src/**/*.steps.ts"
     ]
   }
 }
