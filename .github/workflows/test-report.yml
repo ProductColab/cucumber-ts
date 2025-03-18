@@ -40,6 +40,9 @@ jobs:
       - name: Run tests and generate report
         run: bunx --bun cucumber-js -p default
 
+      - name: Rename report to index.html
+        run: mv test/cucumber-report.html test/index.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
